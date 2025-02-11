@@ -196,7 +196,7 @@ def plot_in_grid(images, save_to, face_indicators=None, face_bboxs=None, preds_g
         if pred_class_prob_gender.item() < 1:
             img_pil_draw.rectangle([(0,0),(50,(1-pred_class_prob_gender.item())*512)], fill ="white", outline =None)
 
-        fnt = ImageFont.truetype(font="../data/0-utils/arial-bold.ttf", size=100)
+        fnt = ImageFont.truetype(font="/net/scratch/sasong/data/0-utils/arial-bold.ttf", size=100)
         img_pil_draw.text((400, 400), f"{idx.item()}", align ="left", font=fnt)
 
         img_pil = ImageOps.expand(img_pil_draw._image, border=(10,10,10,10),fill="black")
@@ -531,7 +531,7 @@ def parse_args(input_args=None):
     )
     parser.add_argument(
         '--classifier_weight_path', 
-        default="../data/2-trained-classifiers/CelebA_MobileNetLarge_08060852/epoch=9-step=12660_MobileNetLarge.pt",
+        default="/net/scratch/sasong/data/2-trained-classifiers/CelebA_MobileNetLarge_08060852/epoch=9-step=12660_MobileNetLarge.pt",
         help="pre-trained classifer that predicts binary gender", 
         type=str,
         required=False, 
@@ -540,16 +540,16 @@ def parse_args(input_args=None):
         '--face_feats_path', 
         help="external face feats, used for the face realism preserving loss", 
         type=str, 
-        default="../data/3-face-features/CelebA_MobileNetLarge_08240859/face_feats.pkl"
+        default="/net/scratch/sasong/data/3-face-features/CelebA_MobileNetLarge_08240859/face_feats.pkl"
         )
     # parser.add_argument(
     #     '--aligned_face_gender_model_path', 
     #     help="train, val, test batch size", 
     #     type=str, 
-    #     default="../data/3-face-features/CelebA_MobileNetLarge_08240859/epoch=9-step=6330_MobileNetLarge.pt"
+    #     default="/net/scratch/sasong/data/3-face-features/CelebA_MobileNetLarge_08240859/epoch=9-step=6330_MobileNetLarge.pt"
     #     )
-    parser.add_argument('--opensphere_config', help="train, val, test batch size", type=str, default="../data/4-opensphere_checkpoints/opensphere_checkpoints/20220424_210641/config.yml")
-    parser.add_argument('--opensphere_model_path', help="train, val, test batch size", type=str, default="../data/4-opensphere_checkpoints/opensphere_checkpoints/20220424_210641/models/backbone_100000.pth")
+    parser.add_argument('--opensphere_config', help="train, val, test batch size", type=str, default="/net/scratch/sasong/data/4-opensphere_checkpoints/opensphere_checkpoints/20220424_210641/config.yml")
+    parser.add_argument('--opensphere_model_path', help="train, val, test batch size", type=str, default="/net/scratch/sasong/data/4-opensphere_checkpoints/opensphere_checkpoints/20220424_210641/models/backbone_100000.pth")
 
     # learning related settings
     parser.add_argument(
