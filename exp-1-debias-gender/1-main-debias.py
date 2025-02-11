@@ -526,7 +526,7 @@ def parse_args(input_args=None):
     parser.add_argument(
         "--prompt_occupation_path",
         type=str,
-        default="../data/1-prompts/occupation.json",
+        default="/net/scratch/sasong/data",
         help="prompt template, and occupations for train and val",
     )
     parser.add_argument(
