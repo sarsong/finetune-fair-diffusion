@@ -147,7 +147,7 @@ def plot_in_grid_gender_race(images, save_to, face_indicators=None, face_bboxs=N
         if pred_class_prob_gender.item() < 1:
             img_pil_draw.rectangle([(0,0),(50,(1-pred_class_prob_gender.item())*512)], fill ="white", outline =None)
             
-        fnt = ImageFont.truetype(font="./data/0-utils/arial-bold.ttf", size=100)
+        fnt = ImageFont.truetype(font="/net/scratch/sasong/data/0-utils/arial-bold.ttf", size=100)
         img_pil_draw.text((400, 400), f"{idx.item()}", align ="left", font=fnt)
 
         img_pil = ImageOps.expand(img_pil_draw._image, border=(10,10,10,10),fill="black")
@@ -242,7 +242,7 @@ def plot_in_grid_gender_race_age(images, save_to, face_indicators=None, face_bbo
         if pred_class_prob_gender.item() < 1:
             img_pil_draw.rectangle([(0,0),(50,(1-pred_class_prob_gender.item())*512)], fill ="white", outline =None)
             
-        fnt = ImageFont.truetype(font="./data/0-utils/arial-bold.ttf", size=100)
+        fnt = ImageFont.truetype(font="/net/scratch/sasong/data/0-utils/arial-bold.ttf", size=100)
         img_pil_draw.text((400, 400), f"{idx.item()}", align ="left", font=fnt)
 
         img_pil = ImageOps.expand(img_pil_draw._image, border=(10,10,10,10),fill="black")
@@ -514,31 +514,31 @@ def parse_args(input_args=None):
     parser.add_argument(
         "--gender_classifier_weight",
         type=str,
-        default="./data/5-trained-test-classifiers/CelebA-MobileNetLarge-Gender-09191318/epoch=19-step=25320_MobileNetLarge.pt",
+        default="/net/scratch/sasong/data/5-trained-test-classifiers/CelebA-MobileNetLarge-Gender-09191318/epoch=19-step=25320_MobileNetLarge.pt",
         help="path to separately trained gender classifier for testing",
     )
     parser.add_argument(
         "--race_classifier_weight",
         type=str,
-        default="./data/5-trained-test-classifiers/fairface-MobileNetLarge-Race4-09191318/epoch=19-step=6760_MobileNetLarge.pt",
+        default="/net/scratch/sasong/data/5-trained-test-classifiers/fairface-MobileNetLarge-Race4-09191318/epoch=19-step=6760_MobileNetLarge.pt",
         help="path to separately trained race classifier for testing",
     )
     parser.add_argument(
         "--age_classifier_weight",
         type=str,
-        default="./data/5-trained-test-classifiers/fairface-MobileNetLarge-Age2-09191319/epoch=19-step=6760_MobileNetLarge.pt",
+        default="/net/scratch/sasong/data/5-trained-test-classifiers/fairface-MobileNetLarge-Age2-09191319/epoch=19-step=6760_MobileNetLarge.pt",
         help="path to separately trained age classifier for testing",
     )
     parser.add_argument(
         "--generated_imgs_dir",
         type=str,
-        default="./exp-3-debias-gender-race/outputs/from-paper_finetune-text-encoder_09190230/checkpoint-12200-generated-images/test_prompts_occupation",
+        default="/net/scratch/sasong/exp-3-debias-gender-race/outputs/from-paper_finetune-text-encoder_09190230/checkpoint-12200-generated-images/test_prompts_occupation",
     )
     parser.add_argument(
         "--save_dir",
         type=str,
         # default=None,
-        default="./exp-3-debias-gender-race/outputs/from-paper_finetune-text-encoder_09190230/checkpoint-12200-generated-images/test_prompts_occupation_results",
+        default="/net/scratch/sasong/exp-3-debias-gender-race/outputs/from-paper_finetune-text-encoder_09190230/checkpoint-12200-generated-images/test_prompts_occupation_results",
         # required=True
     )
     parser.add_argument(
