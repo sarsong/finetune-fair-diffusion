@@ -205,7 +205,7 @@ def plot_in_grid_race(images, save_to, face_indicators=None, face_bboxs=None, pr
         if pred_class_prob_race.item() < 1:
             img_pil_draw.rectangle([(0,0),(50,(1-pred_class_prob_race.item())*512)], fill ="white", outline =None)
             
-        fnt = ImageFont.truetype(font="../data/0-utils/arial-bold.ttf", size=100)
+        fnt = ImageFont.truetype(font="/net/scratch/sasong/data/0-utils/arial-bold.ttf", size=100)
         img_pil_draw.text((400, 400), f"{idx.item()}", align ="left", font=fnt)
 
         img_pil = ImageOps.expand(img_pil_draw._image, border=(10,10,10,10),fill="black")
@@ -536,12 +536,12 @@ def parse_args(input_args=None):
     parser.add_argument(
         "--prompt_occupation_path",
         type=str,
-        default="../data/1-prompts/occupation.json",
+        default="/net/scratch/sasong/data/1-prompts/occupation.json",
         help="prompt template, and occupations for train and val",
     )
     parser.add_argument(
         '--classifier_weight_path', 
-        default="../data/2-trained-classifiers/fairface_MobileNetLarge_GenderRace4_09041216/epoch=9-step=3380_MobileNetLarge.pt",
+        default="/net/scratch/sasong/data/2-trained-classifiers/fairface_MobileNetLarge_GenderRace4_09041216/epoch=9-step=3380_MobileNetLarge.pt",
         help="pre-trained classifer that predicts binary gender", 
         type=str,
         required=False, 
@@ -550,16 +550,16 @@ def parse_args(input_args=None):
         '--face_feats_path', 
         help="external face feats, used for the face realism preserving loss", 
         type=str, 
-        default="../data/3-face-features/FairFace_MobileNetLarge_GenderRace4_09041634/face_feats.pkl"
+        default="/net/scratch/sasong/data/3-face-features/FairFace_MobileNetLarge_GenderRace4_09041634/face_feats.pkl"
         )
     # parser.add_argument(
     #     '--aligned_face_gender_model_path', 
     #     help="train, val, test batch size", 
     #     type=str, 
-    #     default="../data/3-face-features/CelebA_MobileNetLarge_08240859/epoch=9-step=6330_MobileNetLarge.pt"
+    #     default="/net/scratch/sasong/data/3-face-features/CelebA_MobileNetLarge_08240859/epoch=9-step=6330_MobileNetLarge.pt"
     #     )
-    parser.add_argument('--opensphere_config', help="train, val, test batch size", type=str, default="../data/4-opensphere_checkpoints/opensphere_checkpoints/20220424_210641/config.yml")
-    parser.add_argument('--opensphere_model_path', help="train, val, test batch size", type=str, default="../data/4-opensphere_checkpoints/opensphere_checkpoints/20220424_210641/models/backbone_100000.pth")
+    parser.add_argument('--opensphere_config', help="train, val, test batch size", type=str, default="/net/scratch/sasong/data/4-opensphere_checkpoints/opensphere_checkpoints/20220424_210641/config.yml")
+    parser.add_argument('--opensphere_model_path', help="train, val, test batch size", type=str, default="/net/scratch/sasong/data/4-opensphere_checkpoints/opensphere_checkpoints/20220424_210641/models/backbone_100000.pth")
 
     # learning related settings
     parser.add_argument(
